@@ -9,6 +9,7 @@
 
 
 Conceptual Design:
+https://lucid.app/lucidchart/a15dbdf7-1735-4751-9448-47dfa9ca3a43/edit?invitationId=inv_9a2a792a-238c-4718-83ed-cb704de8c3fc&page=0_0#
 
 ![image](https://user-images.githubusercontent.com/13297994/220229587-47654680-2fc6-438d-8d40-60ae82df0ace.png)
 
@@ -19,4 +20,5 @@ Conceptual Design:
 
 
 Architectural Design:
+https://lucid.app/lucidchart/a15dbdf7-1735-4751-9448-47dfa9ca3a43/edit?invitationId=inv_9a2a792a-238c-4718-83ed-cb704de8c3fc&page=zw8yQPUtpWH9#
 ![image](https://user-images.githubusercontent.com/13297994/220229353-a99323fa-2493-457c-a076-7efd47cb0ceb.png)

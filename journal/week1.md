@@ -1,3 +1,17 @@
+# Homework
+1. Created dockerfile and build the docker image.
+2. Created dockerfile to learn about the multistage docker image building (https://github.com/eapenm/dockerproject/tree/main/multistage)
+3. Created an EC2 Instance and deployed the docker software and pull and executed the docker image created in EC2 instance.
+4. Implement healthcheck in the dockerfile and docker compose file. (https://github.com/eapenm/dockerproject/tree/main/healthcheck)
+5. Installed docker and docker desktop in the local machine and created a docker image using the dockerfile and pushed the created docker image to docker hub and used   the executed the application same image from the docker hub in the newly created EC2 Instance. 
+
+![image](https://user-images.githubusercontent.com/13297994/222852931-be44b86e-2121-4679-9fb9-f1f5ca95399a.png)
+
+
+
+
+
+
 # Week 1 — App Containerization
 
 ## References

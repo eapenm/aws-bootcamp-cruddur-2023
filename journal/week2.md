@@ -1,3 +1,23 @@
+# Home Work
+Implemented honeycomb in the backend flask service and able to verify the traces in the honeycomb application.
+![image](https://user-images.githubusercontent.com/13297994/222854647-2462b6ab-44bd-4998-bb05-ea0779ab6a8e.png)
+
+
+![image](https://user-images.githubusercontent.com/13297994/222854523-0b03cc83-f2be-4c61-a4a4-989e07ea1726.png)
+
+Implemented Cloudwatch and x ray in the cuddur application and able to see the traces in AWS X Ray and CLoud watch services.
+
+![image](https://user-images.githubusercontent.com/13297994/222855394-a9d530c4-ac5d-46cb-9b1e-16c35b91f20e.png)
+
+![image](https://user-images.githubusercontent.com/13297994/222855452-e7b427d9-8590-4903-874f-166bbdb26f96.png)
+
+![image](https://user-images.githubusercontent.com/13297994/222855555-203ca3a3-0bd7-4aed-b5dc-c714b8c1c96b.png)
+
+![image](https://user-images.githubusercontent.com/13297994/222855626-346fc226-bb47-4fc5-a71e-847043789f78.png)
+
+![image](https://user-images.githubusercontent.com/13297994/222855712-78240b90-3304-4309-8f34-df7d6d50c066.png)
+
+
 # Week 2 — Distributed Tracing
 
 ## X-Ray

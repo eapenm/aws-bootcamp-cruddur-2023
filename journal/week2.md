@@ -17,6 +17,12 @@ Implemented Cloudwatch and x ray in the cuddur application and able to see the t
 
 ![image](https://user-images.githubusercontent.com/13297994/222855712-78240b90-3304-4309-8f34-df7d6d50c066.png)
 
+Implemented Roll bar.
+
+![image](https://user-images.githubusercontent.com/13297994/222932179-af5c742c-5926-4afc-859b-f9a57eb933c0.png)
+
+![image](https://user-images.githubusercontent.com/13297994/222932201-7b7480dd-c4db-48ad-8518-f4e14f624c6f.png)
+
 
 # Week 2 — Distributed Tracing
 

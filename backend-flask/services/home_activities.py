@@ -64,9 +64,9 @@ class HomeActivities:
         results.insert(0,extra_crud)
 
       span.set_attribute("app.result_length", len(results))
-      sql= """"
+      sql= query_wrap_array("""
       SEELCT * FROM activities
-      """
+      """)
       print(sql)
       with pool.connection() as conn:
         with conn.cursor() as cur:

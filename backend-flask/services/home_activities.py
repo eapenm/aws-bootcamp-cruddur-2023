@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
+from lib.db import pool
 
 class HomeActivities:
   def run(cognito_user_id=None):
@@ -63,4 +64,15 @@ class HomeActivities:
         results.insert(0,extra_crud)
 
       span.set_attribute("app.result_length", len(results))
+      sql= """"
+      SEELCT * FROM activities
+      """
+      print(sql)
+      with pool.connection() as conn:
+        with conn.cursor() as cur:
+          cur.execute(sql)
+          # this will return a tuple
+          # the first field being the data
+          json = cur.fetchone()
+      return json[0]
       return results

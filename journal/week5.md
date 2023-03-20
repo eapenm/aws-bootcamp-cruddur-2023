@@ -1,1 +1,3 @@
 # Week 5 — DynamoDB and Serverless Caching
+
+### Datamodelling lucid page:[ https://www.youtube.com/redirect?event=live_chat&redir_token=QUFFLUhqbWVLQ2V3TU1YV21ULUlvbElfdzhUb3lKOS1QZ3xBQ3Jtc0tsZ0R3eVpRbHdvNmZJYUl1WVMwUy02VF9qZ3VsT295cmt0WFA2RDAzNkl2dUUyWTZ3dXdXRV82S084c3ZXNjd1VF9DN3ZJenZmRjZ5SEdVdlpUNHJpc1lWSWpFUzVnSDJxd1ZKRm9oNzFjZm40N2ZlMA&q=https%3A%2F%2Flucid.app%2Flucidchart%2F8f58a19d-3821-4529-920f-5bb802d6c6a3%2Fedit%3Fviewport_loc%3D2163%252C508%252C2219%252C1161%252C0_0%26invitationId%3Dinv_e47bc316-9caa-4aee-940f-161e01e22715](https://lucid.app/lucidchart/8f58a19d-3821-4529-920f-5bb802d6c6a3/edit?invitationId=inv_e47bc316-9caa-4aee-940f-161e01e22715&page=0_0#)

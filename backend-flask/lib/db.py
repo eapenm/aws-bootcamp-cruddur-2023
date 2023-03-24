@@ -42,14 +42,13 @@ class Db:
     print(sql,params)
   def query_commit(self,sql,params={}):
     self.print_sql('commit with returning',sql,params)
-    self.print_params(params)
+
     pattern = r"\bRETURNING\b"
     is_returning_id = re.search(pattern, sql)
+
     try:
       with self.pool.connection() as conn:
         cur =  conn.cursor()
-        print(sql)
-        print(params)
         cur.execute(sql,params)
         if is_returning_id:
           returning_id = cur.fetchone()[0]

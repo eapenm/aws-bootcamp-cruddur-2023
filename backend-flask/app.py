@@ -126,31 +126,55 @@ def data_message_groups():
     app.logger.debug(e)
     return {}, 401
 
-@app.route("/api/messages/@<string:handle>", methods=['GET'])
-def data_messages(handle):
-  user_sender_handle = 'eapenm'
-  user_receiver_handle = request.args.get('user_reciever_handle')
-
-  model = Messages.run(user_sender_handle=user_sender_handle, user_receiver_handle=user_receiver_handle)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
-  return
+@app.route("/api/messages/<string:message_group_uuid>", methods=['GET'])
+def data_messages(message_group_uuid):
+  access_token = extract_access_token(request.headers)
+  try:
+    claims = cognito_jwt_token.verify(access_token)
+    # authenicatied request
+    app.logger.debug("authenicated")
+    app.logger.debug(claims)
+    cognito_user_id = claims['sub']
+    model = Messages.run(
+    cognito_user_id=cognito_user_id,  
+    message_group_uuid=message_group_uuid
+                       )
+    if model['errors'] is not None:
+      return model['errors'], 422
+    else:
+      return model['data'], 200
+  except TokenVerifyError as e:
+    # unauthenicatied request
+    app.logger.debug(e)
+    return {}, 401
 
 @app.route("/api/messages", methods=['POST','OPTIONS'])
 @cross_origin()
 def data_create_message():
-  user_sender_handle = 'eapenm'
-  user_receiver_handle = request.json['user_receiver_handle']
+  user_receiver_handle = request.json['handle']
+  message_group_uuid = request.json['message_group_uuid']
   message = request.json['message']
+  access_token = extract_access_token(request.headers)
+  try:
+    claims = cognito_jwt_token.verify(access_token)
+    # authenicatied request
+    app.logger.debug("authenicated")
+    app.logger.debug(claims)
+    cognito_user_id = claims['sub']
+    model = CreateMessage.run(
+    message=message,
+    cognito_user_id=cognito_user_id,
+    message_group_uuid=message_group_uuid,
+    user_receiver_handle=user_receiver_handle)
+    if model['errors'] is not None:
+      return model['errors'], 422
+    else:
+      return model['data'], 200
+  except TokenVerifyError as e:
+    # unauthenicatied request
+    app.logger.debug(e)
+    return {}, 401
 
-  model = CreateMessage.run(message=message,user_sender_handle=user_sender_handle,user_receiver_handle=user_receiver_handle)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
-  return
 
 @app.route("/api/activities/home", methods=['GET'])
 #@xray_recorder.capture('activities_home')

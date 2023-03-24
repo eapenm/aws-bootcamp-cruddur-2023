@@ -2,7 +2,7 @@
 INSERT INTO public.users (display_name, handle, cognito_user_id)
 VALUES
   ('Eapen Mani', 'eapenm' ,'MOCK'),
-  ('Bin Mani', 'binmani' ,'MOCK');
+  ('Bin Mani', 'robinm' ,'MOCK');
 
 INSERT INTO public.activities (user_uuid, message, expires_at)
 VALUES

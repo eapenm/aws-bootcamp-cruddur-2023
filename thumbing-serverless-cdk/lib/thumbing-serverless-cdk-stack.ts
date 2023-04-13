@@ -28,7 +28,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     console.log('topicName',topicName)
     console.log('functionPath',functionPath)
 
-    const bucket = this.createBucket(bucketName);
+    const bucket = this.createBucket(uploadsBucketName);
     // create a lambda
     const lambda = this.createLambda(
       functionPath, 
@@ -45,13 +45,13 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
       });
       return bucket;
     }
-    createLambda(functionPath: string): lambda.IFunction {
-      const lambdaFunction = new lambda.Function(this,'TumbLambda' , {
+    createLambda(functionPath: string, uploadsBucketName: string, assetsBucketName: string, folderInput: string, folderOutput: string): lambda.IFunction {
+      const lambdaFunction = new lambda.Function(this, 'ThumbLambda', {
         runtime: lambda.Runtime.NODEJS_18_X,
         handler: 'index.handler',
         code: lambda.Code.fromAsset(functionPath),
         environment: {
-          DEST_BUCKET_NAME: bucketName,
+          DEST_BUCKET_NAME: assetsBucketName,
           FOLDER_INPUT: folderInput,
           FOLDER_OUTPUT: folderOutput,
           PROCESS_WIDTH: '512',
@@ -59,5 +59,5 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
         }
       });
       return lambdaFunction;
-    }
+    } 
 }

@@ -84,7 +84,8 @@ def create_message(client,message_group_uuid, created_at, message, my_user_uuid,
   # print the response
   print(response)
 
-message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399" 
+# message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399" 
+message_group_uuid ="942a7bee-0395-4b89-8ebd-79ec9c79ee83"
 now = datetime.now()
 users = get_user_uuids()
 

@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom';
 import {ReactComponent as Logo} from '../components/svg/logo.svg';
 
 // [TODO] Authenication
-import Cookies from 'js-cookie'
-// Amplify for Cognito
 import { Auth } from 'aws-amplify';
 
 export default function ConfirmationPage() {
@@ -23,7 +21,6 @@ export default function ConfirmationPage() {
     setEmail(event.target.value);
   }
 
-  // Amplify for Cognito
   const resend_code = async (event) => {
     setErrors('')
     try {

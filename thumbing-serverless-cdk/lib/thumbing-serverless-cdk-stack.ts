@@ -42,7 +42,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
   }
 
   importBucket(bucketName: string): s3.IBucket{
-    const bucket =  s3.Bucket.fromBucket(this,"AssetsBucket", bucketName);
+    const bucket =  s3.Bucket.fromBucketName(this,"AssetsBucket", bucketName);
     return bucket;
   }
 

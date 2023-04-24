@@ -5,7 +5,7 @@ pyenv install 3.10.9
 
 # Set your python version
 ```
-pyenv global 3.10.9
+pyenv global 3.10.9   
 ```
 
 # Create virual environment

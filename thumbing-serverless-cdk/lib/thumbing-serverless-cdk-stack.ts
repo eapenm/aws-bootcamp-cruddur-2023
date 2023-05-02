@@ -32,6 +32,8 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
 
     // create a lambda
     const lambda = this.createLambda(functionPath, bucketName, folderInput, folderOutput);
+    this.createS3NotifyToLambda(folderInput,lambda,bucket)
+
   }
   createBucket(bucketName: string): s3.IBucket {
     const bucket = new s3.Bucket(this, 'AssetsBucket', {

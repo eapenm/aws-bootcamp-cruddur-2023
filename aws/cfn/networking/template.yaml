@@ -117,7 +117,7 @@ Resources:
       AvailabilityZone: !Ref Az1
       CidrBlock: !Select [3, !Ref SubnetCidrBlocks]
       EnableDns64: false
-      MapPublicIpOnLaunch: false #private subnet
+      MapPublicIpOnLaunch: false #public subnet
       VpcId: !Ref VPC
       Tags:
         - Key: Name
@@ -129,7 +129,7 @@ Resources:
       AvailabilityZone: !Ref Az2
       CidrBlock: !Select [4, !Ref SubnetCidrBlocks]
       EnableDns64: false
-      MapPublicIpOnLaunch: false #private subnet
+      MapPublicIpOnLaunch: false #public subnet
       VpcId: !Ref VPC
       Tags:
         - Key: Name
@@ -141,7 +141,7 @@ Resources:
       AvailabilityZone: !Ref Az3
       CidrBlock: !Select [5, !Ref SubnetCidrBlocks]
       EnableDns64: false
-      MapPublicIpOnLaunch: false #private subnet
+      MapPublicIpOnLaunch: false #public subnet
       VpcId: !Ref VPC
       Tags:
         - Key: Name

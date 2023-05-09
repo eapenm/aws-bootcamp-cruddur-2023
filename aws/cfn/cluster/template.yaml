@@ -94,7 +94,7 @@ Resources:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties: 
       Name: !Sub "${AWS::StackName}ALB"
-      Type: application   #Application LB
+      Type: application
       IpAddressType: ipv4
       # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-loadbalancer-loadbalancerattributes.html
       Scheme: internet-facing
@@ -111,7 +111,7 @@ Resources:
         - Key: routing.http.preserve_host_header.enabled
           Value: false
         - Key: deletion_protection.enabled
-          Value: true
+          Value: false   # Made delete protection disabled
         - Key: load_balancing.cross_zone.enabled
           Value: true
         - Key: access_logs.s3.enabled
@@ -157,7 +157,7 @@ Resources:
         - Field: host-header
           HostHeaderConfig: 
             Values: 
-              - api.eapencloud.link
+              - api.cruddur.com
       Actions: 
         - Type: forward
           TargetGroupArn:  !Ref BackendTG

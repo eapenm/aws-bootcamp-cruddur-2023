@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
 set -e # stop the execution of the script if it fails
 
-FUNC_DIR="/workspace/aws-bootcamp-cruddur-2023/aws/lambdas/cruddur-messaging-stream/"
-TEMPLATE_PATH="/workspace/aws-bootcamp-cruddur-2023/aws/cfn/ddb/template.yaml"
-CONFIG_PATH="/workspace/aws-bootcamp-cruddur-2023/aws/cfn/ddb/config.toml"
+FUNC_DIR="/workspace/aws-bootcamp-cruddur-2023/ddb/function"
+TEMPLATE_PATH="/workspace/aws-bootcamp-cruddur-2023/ddb/template.yaml"
+CONFIG_PATH="/workspace/aws-bootcamp-cruddur-2023/ddb/config.toml"
 ARTIFACT_BUCKET="cfn-artifacts-eap"
 
 sam validate -t $TEMPLATE_PATH
@@ -21,6 +21,7 @@ sam build \
 #--parameter-overrides
 
 OUTPUT_TEMPLATE_PATH="/workspace/aws-bootcamp-cruddur-2023/.aws-sam/build/packaged.yaml"
+TEMPLATE_PATH="/workspace/aws-bootcamp-cruddur-2023/.aws-sam/build/template.yaml"
 
 echo "== package"
 # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-package.html
@@ -39,4 +40,5 @@ sam deploy \
   --config-file $CONFIG_PATH \
   --stack-name "CrdDdb" \
   --tags group=cruddur-ddb \
+  --no-execute-changeset \
   --capabilities "CAPABILITY_NAMED_IAM"

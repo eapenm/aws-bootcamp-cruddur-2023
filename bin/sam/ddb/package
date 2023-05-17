@@ -1,8 +1,9 @@
 #! /usr/bin/env bash
 set -e # stop the execution of the script if it fails
 ARTIFACT_BUCKET="cfn-artifacts-eap"
-TEMPLATE_PATH="/workspace/aws-bootcamp-cruddur-2023/aws/cfn/ddb/template.yaml"
+TEMPLATE_PATH="/workspace/aws-bootcamp-cruddur-2023/.aws/build/template.yaml"
 OUTPUT_TEMPLATE_PATH="/workspace/aws-bootcamp-cruddur-2023/.aws-sam/build/packaged.yaml"
+CONFIG_PATH="/workspace/aws-bootcamp-cruddur-2023/aws/cfn/ddb/config.toml"
 
 echo "== package"
 # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-package.html

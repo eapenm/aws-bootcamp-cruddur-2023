@@ -19,6 +19,7 @@ def get_last_successful_run():
     LIMIT 1
   """
   return int(db.query_value(sql,{},verbose=False))
+  #return int(db.query_value(sql,{}))
 
 def set_last_successful_run(value):
   sql = """

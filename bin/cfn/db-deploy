@@ -11,7 +11,7 @@ BUCKET=$(cfn-toml key deploy.bucket -t $CONFIG_PATH)
 REGION=$(cfn-toml key deploy.region -t $CONFIG_PATH)
 STACK_NAME=$(cfn-toml key deploy.stack_name -t $CONFIG_PATH)
 PARAMETERS=$(cfn-toml params v2 -t $CONFIG_PATH)
-
+# DB_PASSWORD will be set in the gp environment variable
 aws cloudformation deploy \
   --stack-name $STACK_NAME \
   --s3-bucket $BUCKET \
@@ -22,3 +22,4 @@ aws cloudformation deploy \
   --tags group=cruddur-db \
   --parameter-overrides $PARAMETERS MasterUserPassword=$DB_PASSWORD \
   --capabilities CAPABILITY_NAMED_IAM
+

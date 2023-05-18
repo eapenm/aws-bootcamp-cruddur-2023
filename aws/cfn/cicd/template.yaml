@@ -6,7 +6,7 @@ Description: |
 Parameters:
   GitHubBranch:
     Type: String
-    Default: prod
+    Default: main
   GithubRepo:
     Type: String
     Default: 'eapenm/aws-bootcamp-cruddur-2023'
@@ -45,7 +45,7 @@ Resources:
                 Category: Source
                 Provider: CodeStarSourceConnection
                 Owner: AWS
-                Version: '2'
+                Version: '1'
               OutputArtifacts:
                 - Name: Source
               Configuration:
@@ -87,9 +87,9 @@ Resources:
                 ClusterName:
                   Fn::ImportValue:
                     !Sub ${ClusterStack}ClusterName
-                ServiceName:
-                  Fn::ImportValue:
-                    !Sub ${ServiceStack}ServiceName
+                ServiceName: 'backend-flask'
+                  # Fn::ImportValue:
+                  #   !Sub ${ServiceStack}ServiceName
   CodePipelineRole:
     Type: AWS::IAM::Role
     Properties:

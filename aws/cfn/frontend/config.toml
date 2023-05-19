@@ -1,0 +1,9 @@
+[deploy]
+bucket = 'cfn-artifacts-eap'
+region = 'us-east-1'
+stack_name = 'CrdFrontend'
+
+[parameters]
+CertificateArn = 'arn:aws:acm:us-east-1:895593147410:certificate/460d40eb-edce-4961-a59b-ba03b462c7f1'
+WwwBucketName = 'www.eapencloud.link'
+RootBucketName = 'eapencloud.link'

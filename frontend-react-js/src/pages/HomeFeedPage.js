@@ -1,17 +1,14 @@
 import './HomeFeedPage.css';
 import React from "react";
-//Amplify for Cognito
-import { Auth } from 'aws-amplify';
 
 import DesktopNavigation  from '../components/DesktopNavigation';
 import DesktopSidebar     from '../components/DesktopSidebar';
 import ActivityFeed from '../components/ActivityFeed';
 import ActivityForm from '../components/ActivityForm';
 import ReplyForm from '../components/ReplyForm';
-import {checkAuth, getAccessToken} from '../lib/CheckAuth';
 
-// [TODO] Authenication
-import Cookies from 'js-cookie'
+import {get} from '../lib/Requests';
+import {checkAuth} from '../lib/CheckAuth';
 
 export default function HomeFeedPage() {
   const [activities, setActivities] = React.useState([]);
@@ -22,33 +19,15 @@ export default function HomeFeedPage() {
   const dataFetchedRef = React.useRef(false);
 
   const loadData = async () => {
-    try {
-      const backend_url = `${process.env.REACT_APP_BACKEND_URL}/api/activities/home`
-      await getAccessToken()
-      const access_token = localStorage.getItem("access_token")
-      const res = await fetch(backend_url, {
-        headers: {
-          Authorization: `Bearer ${access_token}`
-        },
-        method: "GET"
-      });
-      let resJson = await res.json();
-      if (res.status === 200) {
-        setActivities(resJson)
-      } else {
-        console.log(res)
+    const url = `${process.env.REACT_APP_BACKEND_URL}/api/activities/home`
+    get(url,{
+      auth: true,
+      success: function(data){
+        setActivities(data)
       }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-// check when the page loads if we are authenicated
-React.useEffect(()=>{
-  loadData();
-  checkAuth();
-}, [])
-
+    })
+  }
+  
   React.useEffect(()=>{
     //prevents double call
     if (dataFetchedRef.current) return;
@@ -71,15 +50,17 @@ React.useEffect(()=>{
           activity={replyActivity} 
           popped={poppedReply} 
           setPopped={setPoppedReply} 
-          setActivities={setActivities} 
-          activities={activities} 
         />
-        <ActivityFeed 
-          title="Home" 
-          setReplyActivity={setReplyActivity} 
-          setPopped={setPoppedReply} 
-          activities={activities} 
-        />
+        <div className='activity_feed'>
+          <div className='activity_feed_heading'>
+            <div className='title'>Home</div>
+          </div>
+          <ActivityFeed 
+            setReplyActivity={setReplyActivity} 
+            setPopped={setPoppedReply} 
+            activities={activities} 
+          />
+        </div>
       </div>
       <DesktopSidebar user={user} />
     </article>

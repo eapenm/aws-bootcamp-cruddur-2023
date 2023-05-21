@@ -6,10 +6,9 @@ import DesktopSidebar     from '../components/DesktopSidebar';
 import ActivityFeed from '../components/ActivityFeed';
 import ActivityForm from '../components/ActivityForm';
 import ReplyForm from '../components/ReplyForm';
-import {checkAuth} from '../lib/CheckAuth';
 
-// [TODO] Authenication
-import Cookies from 'js-cookie'
+import {get} from '../lib/Requests';
+import {checkAuth} from '../lib/CheckAuth';
 
 export default function NotificationsFeedPage() {
   const [activities, setActivities] = React.useState([]);
@@ -20,20 +19,13 @@ export default function NotificationsFeedPage() {
   const dataFetchedRef = React.useRef(false);
 
   const loadData = async () => {
-    try {
-      const backend_url = `${process.env.REACT_APP_BACKEND_URL}/api/activities/notifications`
-      const res = await fetch(backend_url, {
-        method: "GET"
-      });
-      let resJson = await res.json();
-      if (res.status === 200) {
-        setActivities(resJson)
-      } else {
-        console.log(res)
+    const url = `${process.env.REACT_APP_BACKEND_URL}/api/activities/notifications`
+    get(url,{
+      auth: true,
+      success: function(data){
+        setActivities(data)
       }
-    } catch (err) {
-      console.log(err);
-    }
+    })
   };
 
   React.useEffect(()=>{
@@ -47,7 +39,7 @@ export default function NotificationsFeedPage() {
 
   return (
     <article>
-      <DesktopNavigation user={user} active={'home'} setPopped={setPopped} />
+      <DesktopNavigation user={user} active={'notifications'} setPopped={setPopped} />
       <div className='content'>
         <ActivityForm  
           popped={popped}
@@ -61,12 +53,16 @@ export default function NotificationsFeedPage() {
           setActivities={setActivities} 
           activities={activities} 
         />
-        <ActivityFeed 
-          title="Home" 
-          setReplyActivity={setReplyActivity} 
-          setPopped={setPoppedReply} 
-          activities={activities} 
-        />
+        <div className='activity_feed'>
+          <div className='activity_feed_heading'>
+            <div className='title'>Notifications</div>
+          </div>
+          <ActivityFeed 
+            setReplyActivity={setReplyActivity} 
+            setPopped={setPoppedReply} 
+            activities={activities} 
+          />
+        </div>
       </div>
       <DesktopSidebar user={user} />
     </article>

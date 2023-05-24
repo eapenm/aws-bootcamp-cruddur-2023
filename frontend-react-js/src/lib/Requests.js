@@ -1,4 +1,4 @@
-import {getAccessToken} from '../lib/CheckAuth';
+import {getAccessToken} from 'lib/CheckAuth';
 
 async function request(method,url,payload_data,options){
   console.log(options)

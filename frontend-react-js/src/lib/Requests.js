@@ -27,6 +27,12 @@ async function request(method,url,payload_data,options){
 
     res = await fetch(url,attrs)
     let data = await res.json();
+    //test
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(`HTTP error ${res.status}: ${errorData.message}`);
+    }
+    //test
     if (res.status === 200) {
       options.success(data)
     } else {
